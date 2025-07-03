@@ -1,6 +1,6 @@
 # 🎯 Loyalty Program Smart Contract System
 
-A decentralized loyalty program management system built on Blockchain using Solidity and Foundry. This system allows businesses to create and manage their own loyalty programs with point-based rewards.
+A decentralized loyalty program management system built on U2U Network using Solidity and Foundry. This system allows businesses to create and manage their own loyalty programs with point-based rewards.
 
 ## 📋 Table of Contents
 
@@ -231,7 +231,7 @@ forge flatten src/LoyaltyProgramFactory.sol > LoyaltyProgramFactory_flattened.so
 
 - **Factory Contract**: `0x08681814b882dA67F1FEbC69cE2802a1Ec76f12F`
 - **Chain ID**: `2484`
-- **Explorer**: [U2U Testnet Explorer](https://testnet.u2uscan.xyz/)
+- **Explorer**: [U2U Testnet Explorer](https://testnet.u2uscan.xyz/address/0x08681814b882dA67F1FEbC69cE2802a1Ec76f12F)
 
 ## 🤝 Contributing
 
