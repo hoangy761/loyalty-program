@@ -1,6 +1,6 @@
 # 🎯 Loyalty Program Smart Contract System
 
-A decentralized loyalty program management system built on Ethereum using Solidity and Foundry. This system allows businesses to create and manage their own loyalty programs with point-based rewards.
+A decentralized loyalty program management system built on Blockchain using Solidity and Foundry. This system allows businesses to create and manage their own loyalty programs with point-based rewards.
 
 ## 📋 Table of Contents
 
