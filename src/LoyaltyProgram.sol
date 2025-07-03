@@ -1,11 +1,32 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 
-contract LoyaltyProgram {
-    address public owner;
-    mapping(address => uint256) public points;
+contract LoyaltyProgram is Ownable {
+    mapping(address => uint32) public points;
+    mapping(address => bool) public isEnrolled;
+    uint32 private totalUsers;
 
-    constructor() {
-        owner = msg.sender;
+    constructor() Ownable(msg.sender) {}
+
+    function addPoints(address user, uint32 amount) external onlyOwner {
+        if (points[user] == 0 && !isEnrolled[user]) {
+            isEnrolled[user] = true;
+            totalUsers = totalUsers + 1;
+        }
+        points[user] = points[user] + amount;
+    }
+
+    function redeemPoints(address user, uint32 amount) external onlyOwner {
+        require(points[user] >= amount, "Not enough points");
+        points[user] = points[user] - amount;
+    }
+
+    function getMyPoints() external view returns (uint32) {
+        return points[msg.sender];
+    }
+
+    function getTotalUsers() external view returns (uint32) {
+        return totalUsers;
     }
 }
