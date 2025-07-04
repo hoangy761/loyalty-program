@@ -6,7 +6,7 @@ import "./LoyaltyProgram.sol";
 
 contract LoyaltyProgramFactory is Ownable {
     uint32 public loyaltyProgramCount;
-    address[] public loyaltyPrograms;
+    address[] public allPrograms;
 
     mapping(address => address[]) public programsByOwner;
 
@@ -23,7 +23,7 @@ contract LoyaltyProgramFactory is Ownable {
         loyaltyProgram.transferOwnership(msg.sender);
 
         // Store the program
-        loyaltyPrograms.push(address(loyaltyProgram));
+        allPrograms.push(address(loyaltyProgram));
         programsByOwner[msg.sender].push(address(loyaltyProgram));
         loyaltyProgramCount++;
 
@@ -37,7 +37,7 @@ contract LoyaltyProgramFactory is Ownable {
     }
 
     function getAllPrograms() external view returns (address[] memory) {
-        return loyaltyPrograms;
+        return allPrograms;
     }
 
     function getProgramsByOwner(

@@ -7,6 +7,9 @@ contract LoyaltyProgram is Ownable {
     mapping(address => bool) public isEnrolled;
     uint32 private totalUsers;
 
+    event PointsAdded(address indexed user, uint32 amount);
+    event PointsRedeemed(address indexed user, uint32 amount);
+
     constructor() Ownable(msg.sender) {}
 
     function addPoints(address user, uint32 amount) external onlyOwner {
@@ -15,11 +18,13 @@ contract LoyaltyProgram is Ownable {
             totalUsers = totalUsers + 1;
         }
         points[user] = points[user] + amount;
+        emit PointsAdded(user, amount);
     }
 
     function redeemPoints(address user, uint32 amount) external onlyOwner {
         require(points[user] >= amount, "Not enough points");
         points[user] = points[user] - amount;
+        emit PointsRedeemed(user, amount);
     }
 
     function getMyPoints() external view returns (uint32) {
