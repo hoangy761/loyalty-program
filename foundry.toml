@@ -2,5 +2,26 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+fs_permissions = [{ access = "read", path = "./"}]
 
-# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+# Compiler settings (matching your Hardhat config)
+solc = "0.8.28"  # Your contracts use 0.8.28
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+
+# Gas reporting
+gas_reports = ["*"]
+
+# Test settings
+verbosity = 2
+
+# Network configurations
+[rpc_endpoints]
+u2u_mainnet = "https://rpc-mainnet.u2u.xyz/"
+u2u_testnet = "https://rpc-nebulas-testnet.uniultra.xyz/"
+
+# Etherscan configuration for verification
+[etherscan]
+u2u_mainnet = { key = "${ETHERSCAN_API_KEY}", url = "https://u2uscan.xyz/api", chain = 39 }
+u2u_testnet = { key = "${ETHERSCAN_API_KEY}", url = "https://testnet.u2uscan.xyz/api", chain = 2484 }

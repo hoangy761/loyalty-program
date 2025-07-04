@@ -195,43 +195,28 @@ address[] memory myPrograms = factory.getProgramsByOwner(ownerAddress);
 
 ### Automated Verification (Command Line)
 
-```bash -- [PENDING :3]
-# Replace CONTRACT_ADDRESS with your actual deployed contract address
-forge verify-contract \
-  --chain-id 2484 \
-  --verifier-url https://testnet.u2uscan.xyz \
-  --etherscan-api-key dummy_key \
-  CONTRACT_ADDRESS \
-  src/LoyaltyProgramFactory.sol:LoyaltyProgramFactory
+verify LoyaltyProgramFactory
+
+```bash --
+# Replace CONTRACT_ADDRESS[example: 0xb708dd5e4a4eA2a8Ed8a752eBDa0711BD44c6120] and ETHERSCAN_API_KEY to verify on https://testnet.u2uscan.xyz
+forge verify-contract  src/LoyaltyProgramFactory.sol:LoyaltyProgramFactory --chain 2484 --etherscan-api-key ${ETHERSCAN_API_KEY} --verifier-url https://testnet.u2uscan.xyz/api --watch
 
 ```
 
-**Note**: Automated verification may not work with U2U explorer due to API compatibility issues. Use manual verification if the command fails.
+verify LoyaltyProgram
 
-### Manual Verification on U2U Explorer
-
-1. Go to [U2U Testnet Explorer](https://testnet.u2uscan.xyz/)
-2. Find your deployed contract
-3. Click "Contract" → "Verify & Publish"
-4. Use the flattened source code:
-
-```bash
-forge flatten src/LoyaltyProgramFactory.sol > LoyaltyProgramFactory_flattened.sol
+```bash verify
+# Replace CONTRACT_ADDRESS[example: 0x665Cde030324A7Ee5Fedb95160a9539C3694ea46] and ETHERSCAN_API_KEY to verify on https://testnet.u2uscan.xyz
+forge verify-contract CONTRACT_ADDRESS src/LoyaltyProgram.sol:LoyaltyProgram --chain 2484 --verifier etherscan --etherscan-api-key ETHERSCAN_API_KEY --verifier-url https://testnet.u2uscan.xyz/api --watch
 ```
-
-### Verification Details
-
-- **Compiler Version**: `v0.8.28`
-- **License**: MIT
-- **Optimization**: Enabled (default in Foundry)
 
 ## 🌐 Deployed Contracts
 
 ### U2U Testnet
 
-- **Factory Contract**: `0x08681814b882dA67F1FEbC69cE2802a1Ec76f12F`
+- **Factory Contract**: `0xb708dd5e4a4eA2a8Ed8a752eBDa0711BD44c6120`[U2U Testnet Explorer](https://testnet.u2uscan.xyz/address/0xb708dd5e4a4eA2a8Ed8a752eBDa0711BD44c6120)
+- **Loyal Program**: `0x665Cde030324A7Ee5Fedb95160a9539C3694ea46` [U2U Testnet Explorer](https://testnet.u2uscan.xyz/address/0x665Cde030324A7Ee5Fedb95160a9539C3694ea46)
 - **Chain ID**: `2484`
-- **Explorer**: [U2U Testnet Explorer](https://testnet.u2uscan.xyz/address/0x08681814b882dA67F1FEbC69cE2802a1Ec76f12F)
 
 ## 🤝 Contributing
 
